@@ -192,6 +192,19 @@ export default {
 		},
 		
 		
+		async sendMsgCreateDenom({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const client=await initClient(rootGetters)
+				const result = await client.FounderdaoTokenfactoryTokenfactory.tx.sendMsgCreateDenom({ value, fee: {amount: fee, gas: "200000"}, memo })
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreateDenom:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgCreateDenom:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		async sendMsgUpdateDenom({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
@@ -202,19 +215,6 @@ export default {
 					throw new Error('TxClient:MsgUpdateDenom:Init Could not initialize signing client. Wallet is required.')
 				}else{
 					throw new Error('TxClient:MsgUpdateDenom:Send Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
-		async sendMsgUpdateOwner({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const client=await initClient(rootGetters)
-				const result = await client.FounderdaoTokenfactoryTokenfactory.tx.sendMsgUpdateOwner({ value, fee: {amount: fee, gas: "200000"}, memo })
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateOwner:Init Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new Error('TxClient:MsgUpdateOwner:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -231,20 +231,33 @@ export default {
 				}
 			}
 		},
-		async sendMsgCreateDenom({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgUpdateOwner({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const client=await initClient(rootGetters)
-				const result = await client.FounderdaoTokenfactoryTokenfactory.tx.sendMsgCreateDenom({ value, fee: {amount: fee, gas: "200000"}, memo })
+				const result = await client.FounderdaoTokenfactoryTokenfactory.tx.sendMsgUpdateOwner({ value, fee: {amount: fee, gas: "200000"}, memo })
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateDenom:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgUpdateOwner:Init Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new Error('TxClient:MsgCreateDenom:Send Could not broadcast Tx: '+ e.message)
+					throw new Error('TxClient:MsgUpdateOwner:Send Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
 		
+		async MsgCreateDenom({ rootGetters }, { value }) {
+			try {
+				const client=initClient(rootGetters)
+				const msg = await client.FounderdaoTokenfactoryTokenfactory.tx.msgCreateDenom({value})
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgCreateDenom:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgCreateDenom:Create Could not create message: ' + e.message)
+				}
+			}
+		},
 		async MsgUpdateDenom({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
@@ -255,19 +268,6 @@ export default {
 					throw new Error('TxClient:MsgUpdateDenom:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgUpdateDenom:Create Could not create message: ' + e.message)
-				}
-			}
-		},
-		async MsgUpdateOwner({ rootGetters }, { value }) {
-			try {
-				const client=initClient(rootGetters)
-				const msg = await client.FounderdaoTokenfactoryTokenfactory.tx.msgUpdateOwner({value})
-				return msg
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgUpdateOwner:Init Could not initialize signing client. Wallet is required.')
-				} else{
-					throw new Error('TxClient:MsgUpdateOwner:Create Could not create message: ' + e.message)
 				}
 			}
 		},
@@ -284,16 +284,16 @@ export default {
 				}
 			}
 		},
-		async MsgCreateDenom({ rootGetters }, { value }) {
+		async MsgUpdateOwner({ rootGetters }, { value }) {
 			try {
 				const client=initClient(rootGetters)
-				const msg = await client.FounderdaoTokenfactoryTokenfactory.tx.msgCreateDenom({value})
+				const msg = await client.FounderdaoTokenfactoryTokenfactory.tx.msgUpdateOwner({value})
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new Error('TxClient:MsgCreateDenom:Init Could not initialize signing client. Wallet is required.')
+					throw new Error('TxClient:MsgUpdateOwner:Init Could not initialize signing client. Wallet is required.')
 				} else{
-					throw new Error('TxClient:MsgCreateDenom:Create Could not create message: ' + e.message)
+					throw new Error('TxClient:MsgUpdateOwner:Create Could not create message: ' + e.message)
 				}
 			}
 		},
