@@ -95,46 +95,46 @@ export default {
 		}
 	},
 	getters: {
-				getBalance: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getBalance: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.Balance[JSON.stringify(params)] ?? {}
 		},
-				getAllBalances: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getAllBalances: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.AllBalances[JSON.stringify(params)] ?? {}
 		},
-				getTotalSupply: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getTotalSupply: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.TotalSupply[JSON.stringify(params)] ?? {}
 		},
-				getSupplyOf: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getSupplyOf: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.SupplyOf[JSON.stringify(params)] ?? {}
 		},
-				getParams: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getParams: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.Params[JSON.stringify(params)] ?? {}
 		},
-				getDenomMetadata: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getDenomMetadata: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.DenomMetadata[JSON.stringify(params)] ?? {}
 		},
-				getDenomsMetadata: (state) => (params = { params: {}}) => {
-					if (!(<any> params).query) {
-						(<any> params).query=null
-					}
+		getDenomsMetadata: (state) => (params = { params: {}}) => {
+			if (!(<any> params).query) {
+				(<any> params).query=null
+			}
 			return state.DenomsMetadata[JSON.stringify(params)] ?? {}
 		},
 				

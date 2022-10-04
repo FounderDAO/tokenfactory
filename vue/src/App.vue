@@ -36,8 +36,29 @@ export default {
     let address = computed(() => $s.getters['common/wallet/address'])
 
     // lh
+
+    
     onBeforeMount(async () => {
-      await $s.dispatch('common/env/init')
+      // await $s.dispatch('common/env/init', {
+      //   apiNode: 'http://116.203.18.207:1317',
+      //   rpcNode: 'http://116.203.18.207:26657',
+      //   wsNode: 'ws:116.203.18.207:26657/websocket',
+      //   addrPrefix: 'juno',
+      //   sdkVersion: 'Stargate',
+      //   getTXApi: 'http://116.203.18.207:26657/tx?hash=0x',
+      //   offline: false,
+      //   refresh: 5000
+      // })
+      await $s.dispatch('common/env/init',{
+        apiNode: 'http://localhost:1317',
+        rpcNode: 'http://localhost:26657',
+        wsNode: 'ws://localhost:26657/websocket',
+        addrPrefix: 'cosmos',
+        sdkVersion: 'Stargate',
+        getTXApi: 'http://localhost:26657/tx?hash=0x',
+        offline: false,
+        refresh: 5000
+      })
 
       router.push('portfolio')
     })

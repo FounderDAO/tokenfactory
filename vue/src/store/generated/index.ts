@@ -1,8 +1,10 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
+import FounderdaoTokenfactoryTokenfactory from './founderdao.tokenfactory.tokenfactory'
 
 
 export default { 
+  FounderdaoTokenfactoryTokenfactory: load(FounderdaoTokenfactoryTokenfactory, 'founderdao.tokenfactory.tokenfactory'),
   
 }
 
